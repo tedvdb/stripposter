@@ -1,8 +1,6 @@
 import datetime
 from urllib.parse import parse_qs, urlparse
 
-from lxml.etree import tostring
-
 from .base import BaseComicModel
 
 
@@ -30,13 +28,13 @@ class FokkeEnSukke(BaseComicModel):
     def extract_comic(self):
         img = self.element.cssselect('img[src^=content]')[0]
         self.page_url = self.element.cssselect('a.active')[0].get('href')
-        print(self.page_url)
+        #print(self.page_url)
         self.image_url = img.get('src')
         self.title = img.get('alt').rsplit('(', 1)[0]
 
         qs = urlparse(self.page_url).query
         qs = dict(parse_qs(qs))
-        print (qs)
+        #print (qs)
         date_sec = int(qs['ctime'][0])
         self.id = date_sec
         self.date = (datetime.datetime(1970, 1, 1) + 
