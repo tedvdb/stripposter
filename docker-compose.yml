@@ -4,4 +4,5 @@ services:
     restart: unless-stopped
     env_file:
       - .env-stripbot
-    volumes: ./states:/app/states
+    volumes:
+      - ./states:/app/states

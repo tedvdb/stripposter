@@ -1,4 +1,5 @@
 import datetime
+import os
 from urllib.parse import urljoin
 
 import requests
@@ -62,7 +63,8 @@ def get_new_comics(comic_model, posted_ids):
 
 def post_updates(*comic_sites):
     for comic_site in comic_sites:
-        statefilename = 'states/state-%s.json' % comic_site.name.lower().replace(' ', '-')
+        statefilename = 'state-%s.json' % comic_site.name.lower().replace(' ', '-')
+        statefilename = os.path.join('states', statefilename)
         with StateFile(statefilename) as state:
             posted_ids = set(state.setdefault('posted_ids', []))
             comics = get_new_comics(comic_site, posted_ids)
