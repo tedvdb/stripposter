@@ -2,3 +2,4 @@ state-*.json
 tokens.sh
 .venv
 __pycache__/
+.env*

@@ -2,11 +2,11 @@
 
 import time
 
-from stripbot.comics import DirkJan, Sigmund, Jeroom
+from stripbot.comics import DirkJan, FokkeEnSukke
 from stripbot.update import post_updates
 
 
 if __name__ == '__main__':
     while True:
-        post_updates(DirkJan, Sigmund, Jeroom)
+        post_updates(DirkJan, FokkeEnSukke)
         time.sleep(86400 / 6)  # check 6 times a day

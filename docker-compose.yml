@@ -1,0 +1,5 @@
+services:
+  stripbot:
+    build: .
+    env_file:
+      - .env-stripbot

@@ -3,9 +3,10 @@ from urllib.parse import urljoin
 
 import requests
 
+from .lemmy import Lemmy
 from .statefile import StateFile
-from .reddit import post_comic
 
+lemmy = Lemmy()
 
 def discover(comic_model):
 
@@ -68,6 +69,6 @@ def post_updates(*comic_sites):
             state['posted_ids'] = sorted(posted_ids)
             for comic in comics:
                 print("posting %s" % (comic))
-                post_comic(comic)
+                lemmy.create_post(comic)
                 posted_ids.add(comic.id)
                 state['posted_ids'] = sorted(posted_ids)
